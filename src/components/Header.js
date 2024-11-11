@@ -22,15 +22,23 @@ const Header = () => {
     router.push('/User_score'); // 遷移先のパス
   };
 
+  const navigateToTop = () => {
+    router.push('/'); // 遷移先のパス
+  };
+
+  const navigateToQuestion = () => {
+    router.push('/User_question'); // 遷移先のパス
+  };
+
   return (
     <div className="w-full bg-red-50"> {/* 全幅を指定 */}
       <div alt="title" className="relative bg-white py-8 w-full"> {/* 全幅を指定 */}
         <div className="text-left relative top-[-15px] left-5 w-full">
-          <h1 className="text-6xl font-bold text-gray-800">ECON</h1>
+          <h1 className="text-6xl font-bold text-gray-800" onClick={navigateToTop}>ECON</h1>
         </div>
 
         <div className="absolute top-4 right-4 flex items-center space-x-2">
-          <div className="text-2xl text-gray-800 hover:text-3xl hover:underline cursor-pointer transition duration-300">
+          <div className="text-2xl text-gray-800 hover:text-3xl hover:underline cursor-pointer transition duration-300" onClick={navigateToQuestion}>
             question
           </div>
           <div 
