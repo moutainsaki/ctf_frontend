@@ -1,4 +1,6 @@
 import React from 'react';
+import Header from "../../components/Header"; // Headerコンポーネントをインポート
+
 
 const QBt_u = () => {
   const cards = [
@@ -14,7 +16,9 @@ const QBt_u = () => {
   ];
 
   return (
-    <div className="grid grid-cols-3 gap-6 p-6 bg-[#4fd1c5] min-h-screen">
+    <div>
+      <Header />
+      <div className="grid grid-cols-3 gap-6 p-6 bg-[#4fd1c5] min-h-screen">
       {cards.map((card) => (
         <div 
           key={card.id} 
@@ -37,6 +41,7 @@ const QBt_u = () => {
           <p className="text-lg text-black">{card.text}</p>
         </div>
       ))}
+      </div>
     </div>
   );
 };
