@@ -1,30 +1,42 @@
-CTF_FRONTEND/
-├── node_modules/
-├── public/
-│   ├── favicon.ico            # ウェブサイトのファビコン
-│   └── その他の静的ファイル     # 画像や静的なアセット
-├── src/
-│   ├── app/
-│   │   ├── (components)/       # ページごとで使うコンポーネントの共通フォルダ
-│   │   ├── (layouts)/          # 共通レイアウトをまとめるフォルダ
-│   │   ├── api/                 # API ルートのフォルダ
-│   │   ├── fonts/               # カスタムフォントの設定
-│   │   ├── page.tsx             # ルートページ
-│   │   ├── layout.tsx           # グローバルレイアウト
-│   │   └── global-error.tsx     # エラーハンドリング用
-│   ├── components/             # グローバルコンポーネント
-│   │   └── Navbar.tsx          # 例: ナビゲーションバー
-│   ├── hooks/                  # カスタムフック
-│   ├── utils/                  # ユーティリティ関数
-│   ├── styles/
-│   │   └── globals.css         # グローバルスタイル
-│   └── types/                  # TypeScriptの型定義
-├── .eslintrc.json              # ESLint設定
-├── .gitignore                  # Git管理除外ファイル
-├── next.config.ts              # Next.js 設定ファイル
-├── postcss.config.js           # PostCSS 設定ファイル
-├── tailwind.config.ts          # Tailwind CSS 設定ファイル
-├── tsconfig.json               # TypeScript 設定ファイル
-├── README.md                   # プロジェクトの説明
-└── その他の構成ファイル
-bra
+CTF_FRONTEND
+├── .next/                     # Next.js が生成するビルド関連のフォルダ
+├── node_modules/              # プロジェクト依存パッケージがインストールされるフォルダ
+├── public/                    # 静的ファイルを配置するフォルダ
+│   ├── user.svg               # ユーザーアイコン画像
+│   └── wavy.png               # 背景などに使う波状画像
+├── src/                       # プロジェクトのソースコード
+│   ├── app/                   # ページルート
+│   │   ├── api/               # API 関連（内容不明）
+│   │   ├── fonts/             # フォントファイル
+│   │   │   ├── GeistMonoVF.woff
+│   │   │   └── GeistVF.woff
+│   │   ├── Login/             # Loginページ
+│   │   │   └── page.tsx       # ログインページのコンポーネント
+│   │   ├── User_question/     # User_questionページ
+│   │   │   └── page.tsx       # 質問ページのコンポーネント
+│   │   ├── User_score/        # User_scoreページ
+│   │   │   └── page.tsx       # スコアページのコンポーネント
+│   │   ├── favicon.ico        # Faviconアイコン
+│   │   ├── globals.css        # グローバルスタイル
+│   │   ├── layout.tsx         # アプリ全体のレイアウト
+│   │   └── page.tsx           # ルートページ
+│   ├── components/            # 再利用可能なコンポーネント
+│   │   ├── Chart.js           # グラフ関連のコンポーネント
+│   │   ├── Header.js          # ヘッダーコンポーネント
+│   │   └── Tornament.js       # トーナメント関連のコンポーネント
+│   ├── fonts/                 # 再配置されたフォント
+│   │   ├── GeistMonoVF.woff
+│   │   └── GeistVF.woff
+│   ├── styles/                # スタイル関連フォルダ
+│   ├── types/                 # 型定義フォルダ
+├── .eslintrc.json             # ESLint 設定ファイル
+├── .gitignore                 # Git の無視設定ファイル
+├── next-env.d.ts              # Next.js 環境の型定義ファイル
+├── next.config.ts             # Next.js 設定ファイル
+├── package-lock.json          # npm の依存性ロックファイル
+├── package.json               # npm プロジェクト定義ファイル
+├── postcss.config.mjs         # PostCSS の設定
+├── README.md                  # プロジェクトの説明
+├── tailwind.config.ts         # Tailwind CSS の設定
+├── tsconfig.json              # TypeScript 設定ファイル
+└── ディレクトリ構成.txt       # ディレクトリ構成の説明ファイル
