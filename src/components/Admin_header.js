@@ -4,11 +4,12 @@ import React, { useState } from 'react';
 import Wavy from '../../public/wavy.png';
 import User from '../../public/user.svg';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 
-const Header = () => {
+const Admin_header = () => {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
-  const router = useRouter(); // useRouter フックをトップレベルで呼び出す
+  const router = useRouter();
+  const pathname = usePathname(); // 現在のパスを取得
 
   const handleUserIconClick = () => {
     setIsPopupVisible((prevState) => !prevState);
@@ -27,8 +28,20 @@ const Header = () => {
   };
 
   const navigateToQuestion = () => {
-    router.push('/User_question'); // 遷移先のパス
+    router.push('/Edit_question'); // 遷移先のパス
   };
+
+  const navigateToMember = () => {
+    router.push('/Edit_member'); // 遷移先のパス
+  };
+
+  const handleLogout = () => {
+    // ログアウト処理（必要に応じて認証状態をリセット）
+    router.push('/Login'); // ログイン画面に遷移
+  };
+
+  // パスが root の場合、非表示にするフラグ
+  const shouldHideMenu = pathname === '/';
 
   return (
     <div className="w-full bg-red-50"> {/* 全幅を指定 */}
@@ -38,15 +51,30 @@ const Header = () => {
         </div>
 
         <div className="absolute top-4 right-4 flex items-center space-x-2">
-          <div className="text-2xl text-gray-800 hover:text-3xl hover:underline cursor-pointer transition duration-300" onClick={navigateToQuestion}>
-            question
-          </div>
-          <div 
-            className="text-2xl text-gray-800 hover:text-3xl hover:underline cursor-pointer transition duration-300" 
-            onClick={navigateToScore} // scoreクリック時のハンドラ
-          >
-            score
-          </div>
+          {!shouldHideMenu && ( /* root パスでない場合に表示 */
+            <>
+
+            <div
+                className="text-2xl text-gray-800 hover:text-3xl hover:underline cursor-pointer transition duration-300 mr-5"
+                onClick={navigateToMember}
+                >
+                Edit_member
+                </div>
+                <div
+                className="text-2xl text-gray-800 hover:text-3xl hover:underline cursor-pointer transition duration-300 mr-5"
+                onClick={navigateToQuestion}
+                >
+                Edit_question
+                </div>
+                <div
+                className="text-2xl text-gray-800 hover:text-3xl hover:underline cursor-pointer transition duration-300 mr-16"
+                onClick={navigateToScore}
+                >
+                score
+            </div>
+
+            </>
+          )}
           <div className="relative">
             <Image
               src={User}
@@ -76,7 +104,7 @@ const Header = () => {
                     {/* Logout Button at the Bottom Right */}
                     <button
                       className="absolute bottom-4 right-4 bg-red-500 text-white rounded px-4 py-2 hover:bg-red-600"
-                      // onClick={logout} // ログアウトボタンのクリックハンドラ
+                      onClick={handleLogout} // ログアウトボタンのクリックハンドラ
                     >
                       Logout
                     </button>
@@ -87,10 +115,10 @@ const Header = () => {
           </div>
         </div>
 
-        <Image src={Wavy} className="absolute bottom-0 w-full" /> {/* 画像も全幅 */}
+        <Image src={Wavy} alt="Wavy Background" className="absolute bottom-0 w-full" /> {/* 画像も全幅 */}
       </div>
     </div>
   );
 };
 
-export default Header;
+export default Admin_header;
